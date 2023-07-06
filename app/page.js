@@ -12,8 +12,8 @@ const Home = () => {
       {/* <Login/> */}
       {/* <Otp/> */}
       {/* <SignupDetails/> */}
-      {/* <HomeScreen/> */}
-      <FoodCart/>
+      <HomeScreen/>
+      {/* <FoodCart/> */}
       <Footer/>
     </div>
   )

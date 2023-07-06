@@ -61,7 +61,7 @@ const HomeScreen = () => {
     <div>
     </div>
     {/* show this food details */}
-    <FoodDetails/>
+    {/* <FoodDetails/> */}
     </div>
 
      </>
