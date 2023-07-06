@@ -11,7 +11,7 @@ const AddressSelectCard = ({address, landmark, selected, onClick}) => {
   return (
     <div  className='w-full bg-white relative rounded-lg flex items-center justify-start gap-2 px-2 p-3'>
       <div className='w-[20%]'>
-        <img className='w-full h-[50px]' src="home.png" alt="home-location" />
+        <img className='w-full h-[50px]' src="./image/home.png" alt="home-location" />
       </div>
 
       <div className='w-[80%]'>

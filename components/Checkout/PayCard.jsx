@@ -9,7 +9,7 @@ const PayCard = ({title, text}) => {
       </div>
 
       <div>
-        <img src="back.png" alt="back" />
+        <img src="./image/back.png" alt="back" />
       </div>
     </div>
   )

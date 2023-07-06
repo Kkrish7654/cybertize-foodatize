@@ -9,7 +9,7 @@ const CallCard = () => {
       </div>
 
       <div className='w-[60px] h-[60px]'>
-        <img className='w-full h-full object-contain' src="telephone.png" alt="telephone" />
+        <img className='w-full h-full object-contain' src="./image/telephone.png" alt="telephone" />
       </div>
     </div>
   )
