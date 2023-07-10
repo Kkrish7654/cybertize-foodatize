@@ -21,10 +21,14 @@ const Otp = () => {
         <OtpInputs/>
         
         <Link className='text-sm underline' href="">Resend OTP</Link>
-        <ButtonSuccess text="Continue" link="/signup-details"/>
+      
       
       </form>
-
+      <Link href="/signup-details" >
+        <button className={`w-full h-[40px] text-white text-[20px] bg-[#23AF00] `}>   
+            Continue   
+        </button>
+      </Link>
     </div>
   )
 }

@@ -21,8 +21,12 @@ const SignupDetails = () => {
         <InputText/>
       </div>  
 
-      <ButtonSuccess text="Signup" link="/home"/>
     </form>
+    <Link href="/home" >
+        <button className={`w-full h-[40px] text-white text-[20px] bg-[#23AF00]`}>   
+            Continue   
+        </button>
+    </Link>
 
   </div>
   )
