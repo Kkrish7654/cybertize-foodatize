@@ -7,8 +7,7 @@ import React from 'react'
 const Footer = () => {
 
 
-  return (
-   
+  return (  
       <div className='fixed bottom-0 w-full h-[80px] mt-12 flex items-center justify-between p-4 bg-[#23AF00] text-white'>
         <div>
           <h4 className='text-lg font-semibold'>1 Item | Rs.340</h4>
@@ -18,8 +17,6 @@ const Footer = () => {
           <Link className='text-lg font-semibold' href="/cart" >View Cart</Link>
         </div>
       </div>
-    
-   
   )
 }
 
