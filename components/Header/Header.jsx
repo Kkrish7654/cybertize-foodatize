@@ -1,13 +1,9 @@
-'use client'
 
-import { useRouter } from 'next/navigation'
 import React from 'react'
 
 const Header = () => {
 
-  const router = useRouter();
-
-  const shouldShowElement = router.pathname === '/home';
+  
 
   return (
     <nav className='py-[16px] px-[18px] flex gap-2 items-center justify-between shadow-lg shadow-[#ebebeb] bg-white'>
@@ -22,8 +18,7 @@ const Header = () => {
         </div>
       </div>
 
-      {
-        shouldShowElement && (
+     
           <div className='flex gap-2'>
           <div className='flex flex-col gap-1 items-center'>
             <img src='./image/whatsapp.png' alt='whatsapp'/>
@@ -34,8 +29,7 @@ const Header = () => {
             <span className='text-xs'>Account</span>
           </div>
         </div>
-        )
-      }
+  
      
     </nav>
   )
