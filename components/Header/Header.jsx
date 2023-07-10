@@ -1,4 +1,5 @@
 
+import Link from 'next/link'
 import React from 'react'
 
 const Header = () => {
@@ -10,7 +11,9 @@ const Header = () => {
       
       <div className='flex gap-2 items-end'>
         <div>
-          <img className='w-[35px] h-[33px]' src="./image/delivery-man.png" alt="logo" />
+          <Link href="/home">
+          <img className='w-[35px] h-[33px]' src="./image/delivery-man.png" alt="logo"/>
+          </Link>
         </div>
         <div className=''>
           <img src="./image/Foodatize.png" alt="logo-title" />
