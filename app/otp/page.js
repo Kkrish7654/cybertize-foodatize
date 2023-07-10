@@ -1,10 +1,10 @@
-import React from 'react'
-import Login from '@/components/Login/Login'
+import Otp from "@/components/Otp/Otp"
+
 
 const Index = () => {
   return (
     <div className='min-h-screen relative'>
-        <Login/>
+      <Otp/>
     </div>
   )
 }

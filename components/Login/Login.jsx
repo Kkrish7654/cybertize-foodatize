@@ -13,7 +13,7 @@ const Login = () => {
       <form action="" className='flex flex-col gap-1'>
         <h4 className='text-[#4A4A4A] text-[18px] font-medium tracking-wide'>Enter 10 digit mobile number</h4>
         <InputText/>
-        <ButtonSuccess text="Continue" customStyle="mt-6"/>
+        <ButtonSuccess text="Continue" customStyle="mt-6" link="/otp"/>
 
       </form>
 

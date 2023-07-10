@@ -7,3 +7,10 @@
 html{
   font-family: 'Inter', sans-serif;
 }
+
+@media (min-width: 768px) {
+  body {
+    max-width: 370px; /* Adjust this value to match your desired phone screen width */
+    margin: 0 auto;
+  }
+}

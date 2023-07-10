@@ -1,10 +1,9 @@
-import React from 'react'
-import Login from '@/components/Login/Login'
+import SignupDetails from "@/components/SignupDetails/SignupDetails"
 
 const Index = () => {
   return (
     <div className='min-h-screen relative'>
-        <Login/>
+      <SignupDetails/>
     </div>
   )
 }

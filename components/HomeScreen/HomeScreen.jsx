@@ -31,7 +31,8 @@ const HomeScreen = () => {
       item_quantity:12,
       item_details:'One plate Chicken Chilli Boneless with 12 pcs of chicken hot fried. Frshly brewed and Serverd' 
     },
-    {item_name: 'Chicken Chilli - Boneless',
+    {
+      item_name: 'Chicken Chilli - Boneless',
       item_price : 210,
       item_quantity:12,
       item_details:'One plate Chicken Chilli Boneless with 12 pcs of chicken hot fried. Frshly brewed and Serverd' 
@@ -62,7 +63,9 @@ const HomeScreen = () => {
     </div>
     {/* show this food details */}
     {/* <FoodDetails/> */}
+   
     </div>
+
 
      </>
      
