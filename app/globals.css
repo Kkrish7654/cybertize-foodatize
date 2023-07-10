@@ -10,7 +10,7 @@ html{
 
 @media (min-width: 768px) {
   body {
-    max-width: 370px; /* Adjust this value to match your desired phone screen width */
+    max-width: 380px; /* Adjust this value to match your desired phone screen width */
     margin: 0 auto;
   }
 }

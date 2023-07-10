@@ -10,7 +10,7 @@ const SignupDetails = () => {
       <h4 className='text-[#4A4A4A] text-[18px] font-medium tracking-wide'>Since you’re new we need to know</h4>
     </div>
 
-    <form action="" className='flex flex-col gap-4'>
+    <form className='flex flex-col gap-4'>
       <div>
         <label htmlFor="fullName">Your full name</label>
         <InputText/>

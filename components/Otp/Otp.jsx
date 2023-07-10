@@ -17,7 +17,7 @@ const Otp = () => {
         <h4 className='text-[#4A4A4A] text-[18px] font-medium tracking-wide'>Enter the OTP we’ve sent</h4>
       </div>
 
-      <form action="" className='flex flex-col gap-4'>
+      <form className='flex flex-col gap-4'>
         <OtpInputs/>
         
         <Link className='text-sm underline' href="">Resend OTP</Link>

@@ -5,7 +5,7 @@ const SearchBox = () => {
     <form className="relative">
       <input
         className="
-        w-full px-3 py-3 rounded-md"
+        w-full px-3 py-3 rounded-md truncate"
         type="search"
         name="search"
         placeholder="Search Menu & dishes from the restaurant.."
