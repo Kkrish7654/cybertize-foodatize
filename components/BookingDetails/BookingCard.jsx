@@ -1,9 +1,8 @@
-import React from 'react'
 
-const CartItem = ({item_name, item_price, item_quantity}) => {
+const BookingCard = ({item_name, item_price, item_quantity}) => {
 
   return (
-    <div className='flex items-stretch bg-white relative rounded-xl shadow-lg shadow-[#ebebeb] overflow-auto'>
+    <div className='w-full flex items-stretch bg-white relative rounded-xl shadow-lg shadow-[#ebebeb] overflow-auto'>
       <div className='p-2 w-[120px] h-[100px]'>
         <img className='w-full h-full object-contain' src="./image/food-item.png" alt="food-item" />
       </div>
@@ -13,11 +12,8 @@ const CartItem = ({item_name, item_price, item_quantity}) => {
           <p className='text-sm font-bold text-[#2E2E2E]'>Rs.{item_price} / <span className='text-[#616161]'>{item_quantity} Pieces</span></p>
         </div>
       </div>
-      <button className='absolute top-2 right-4'>
-        <img src="./image/delete.png" alt="delete" />
-      </button>
     </div>
   )
 }
 
-export default CartItem
+export default BookingCard;

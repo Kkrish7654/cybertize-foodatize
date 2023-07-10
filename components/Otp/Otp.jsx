@@ -21,7 +21,7 @@ const Otp = () => {
         <OtpInputs/>
         
         <Link className='text-sm underline' href="">Resend OTP</Link>
-        <ButtonSuccess text="Continue"/>
+        <ButtonSuccess text="Continue" link="/signup-details"/>
       
       </form>
 

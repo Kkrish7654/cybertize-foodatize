@@ -13,7 +13,7 @@ const FoodDetails = ({item_name, item_description}) => {
       </div>
 
       <button className='absolute'>
-        <img src="x-mark.png" alt="back" />
+        <img src="./image/x-mark.png" alt="back" />
       </button>
     </div>
   )

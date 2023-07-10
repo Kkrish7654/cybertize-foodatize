@@ -21,7 +21,7 @@ const SignupDetails = () => {
         <InputText/>
       </div>  
 
-      <ButtonSuccess text="Signup"/>
+      <ButtonSuccess text="Signup" link="/home"/>
     </form>
 
   </div>
