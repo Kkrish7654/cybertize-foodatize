@@ -18,7 +18,7 @@ const Index = () => {
     </div>
 
     <div className='mt-4'>
-      <ButtonSuccess text="Update Details"/>
+      <ButtonSuccess text="Update Details" link=""/>
     </div>
   </div>
        <img className='absolute bottom-0 right-0' src='./image/spoon.png' alt='spoon'/>
