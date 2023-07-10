@@ -1,6 +1,7 @@
 import React from 'react'
 import ButtonSuccess from '../Buttons/ButtonSuccess'
 import InputText from '../Buttons/InputText'
+import Link from 'next/link'
 
 const SignupDetails = () => {
   return (

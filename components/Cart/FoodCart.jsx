@@ -1,6 +1,6 @@
 import React from 'react'
 import CartItem from './CartItem'
-import AddButton from '../Buttons/AddButton'
+import Link from 'next/link'
 
 const FoodCart = () => {
 
@@ -18,7 +18,7 @@ const FoodCart = () => {
     <div className='p-[18px] py-[28px] flex flex-col gap-4'>
       {/* cart title */}
       <div>
-        <h4 className='font-bold text-lg'>cart</h4>
+        <h4 className='font-bold text-lg'>Cart</h4>
       </div>
 
       {/* cart items */}
@@ -30,7 +30,11 @@ const FoodCart = () => {
         }
       </div>
       <div>
-        <AddButton title="+ Add more items"/>
+        <Link href="/home">
+        <button className={`w-full h-[50px] text-[#666666] text-[16px] bg-white rounded-lg`}>
+          + Add more items
+        </button>
+      </Link>
       </div>
     </div>
   )

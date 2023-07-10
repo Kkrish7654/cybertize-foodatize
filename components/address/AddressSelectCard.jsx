@@ -25,7 +25,7 @@ const AddressSelectCard = ({address, landmark, selected, onClick}) => {
       </div>
       </div>
 
-      <div onClick={handleCardClick} className={`absolute w-6 h-6 top-2 right-2 rounded-full z-20 ${selected ? 'bg-[#00C767]' : 'bg-slate-300'}`}></div>
+      <div onClick={handleCardClick} className={`absolute w-5 h-5 top-2 right-2 rounded-full z-20 ${selected ? 'bg-[#00C767]' : 'bg-slate-300'}`}></div>
     </div>
   )
 }

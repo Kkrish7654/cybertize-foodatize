@@ -5,8 +5,6 @@ import React from 'react'
 
 
 const FooterCheckout = () => {
-
-
   return (  
       <div className='fixed bottom-0 w-full h-[80px] mt-12 flex items-center justify-between p-4 bg-[#23AF00] text-white'>
         <div>
@@ -14,7 +12,7 @@ const FooterCheckout = () => {
           <p className='text-sm'>Extra charges may apply</p>
         </div>
         <div>
-          <Link className='text-lg font-semibold' href="/cart" >View Cart</Link>
+          <Link className='text-lg font-semibold' href="/checkout" >Checkout</Link>
         </div>
       </div>
   )

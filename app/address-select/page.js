@@ -1,6 +1,7 @@
 'use client'
 
 import AddButton from '@/components/Buttons/AddButton';
+import FooterCheckout from '@/components/Footer/FooterCheckout';
 import AddressSelectCard from '@/components/address/AddressSelectCard'
 import Link from 'next/link';
 import React from 'react'
@@ -49,9 +50,11 @@ const Index = () => {
 
 
   return (
+    <>
+    
+
     <div className='p-[18px] py-[28px] flex flex-col gap-4'>
       <div><h4 className='font-bold'>Select Address</h4></div>
-      <Link href="/checkout">
       <div className='flex flex-col gap-4'>
         {
           address.map((a,index) => (
@@ -65,9 +68,10 @@ const Index = () => {
           ))
         }
       </div>
-      </Link>
       <AddButton title="+ Add new address"/>
     </div>
+      <FooterCheckout/>
+    </>
   )
 }
 
