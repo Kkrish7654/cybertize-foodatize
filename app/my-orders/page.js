@@ -62,7 +62,7 @@ const Index = () => {
       </div>
 
       <div className='mt-12 flex flex-col gap-2'>
-      <h4 className='font-bold'>completed Orders</h4>
+      <h4 className='font-bold'>Completed Orders</h4>
       <div className='flex flex-col gap-4'>
         {
           orders.map((order, index) => (

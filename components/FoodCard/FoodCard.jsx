@@ -49,9 +49,9 @@ const FoodCard = ({item_name, item_price, item_quantity, item_details}) => {
           ) :
           (
             <div className='flex items-center justify-center h-[30px] w-[105px] bg-[#24FF00]'>
-            <button onClick={decrement} className='grow'>-</button>
-              <span className='grow bg-white h-full text-center'>{count}</span>
-            <button onClick={increment} className='grow'>+</button>
+            <button onClick={decrement} className='grow font-semibold'>-</button>
+              <span className='grow bg-white text-center font-semibold'>{count}</span>
+            <button onClick={increment} className='grow font-semibold'>+</button>
           </div>
           )
         }
