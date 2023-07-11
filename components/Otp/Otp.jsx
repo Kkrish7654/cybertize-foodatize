@@ -17,18 +17,9 @@ const Otp = () => {
         <h4 className='text-[#4A4A4A] text-[18px] font-medium tracking-wide'>Enter the OTP we’ve sent</h4>
       </div>
 
-      <form className='flex flex-col gap-4'>
-        <OtpInputs/>
-        
-        <Link className='text-sm underline' href="">Resend OTP</Link>
+        <OtpInputs/>  
+ 
       
-      
-      </form>
-      <Link href="/signup-details" >
-        <button className={`w-full h-[40px] text-white text-[20px] bg-[#23AF00] `}>   
-            Continue   
-        </button>
-      </Link>
     </div>
   )
 }
