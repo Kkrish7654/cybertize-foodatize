@@ -83,7 +83,6 @@ const AddAddress = () => {
 
   // end //
 
-  console.log(longitude, " ", latitude);
   return (
     <div className="p-[18px] py-[28px] flex flex-col gap-4">
       <h4 className="font-bold">Add new address</h4>
@@ -186,7 +185,12 @@ const AddAddress = () => {
           />
         </div>
 
-        <ButtonSuccess text="Save address" customStyle="h-[50px]" />
+        <button
+          type="submit"
+          className={`w-full h-[40px] text-white text-[20px] bg-[#23AF00] mt-4`}
+      >
+        Save Address
+      </button>
       </form>
     </div>
   );
