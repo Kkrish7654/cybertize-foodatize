@@ -65,6 +65,11 @@ const OtpInputs = () => {
           />
         ))}
       </div>
+
+      <Link className="text-sm underline" href="">
+        Resend OTP
+      </Link>
+      
       {formik.touched.otp && formik.errors.otp && (
         <div className="text-red-500">{formik.errors.otp}</div>
       )}
@@ -75,9 +80,7 @@ const OtpInputs = () => {
       >
         Continue
       </button>
-      <Link className="text-sm underline" href="">
-        Resend OTP
-      </Link>
+      
     </form>
   );
 };

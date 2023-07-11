@@ -75,7 +75,7 @@ const SignupDetails = () => {
       <button
             type="submit"
             disabled={isSubmitting || isValidating}
-            className={`w-full h-[40px] text-white text-[20px] ${isValidating ? 'bg-slate-500' : 'bg-[#23AF00]'}`}
+            className={`w-full h-[40px] text-white text-[20px] bg-[#23AF00] `}
   
           >
             {isSubmitting ? 'Loading...' : 'Signup'}
