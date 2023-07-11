@@ -50,7 +50,7 @@ const Login = () => {
                 className={`w-full p-[10px] border-[1px] border-[#23AF00]`}/>
 
               
-                <button type='submit' disabled={isSubmitting || isValidating} className={`w-full h-[40px] text-white text-[20px] bg-[#23AF00] mt-4 `}>   
+                <button type='submit' disabled={isSubmitting || isValidating} className={`w-full h-[40px] text-white text-[20px] bg-[#23AF00] mt-8 `}>   
                  Continue  
                 </button>
               </form>
