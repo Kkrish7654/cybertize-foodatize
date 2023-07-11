@@ -6,7 +6,7 @@ const BillDetails = () => {
       <div className='flex items-center justify-between gap-2'>
       <div className='flex flex-col gap-2'>
         <p className='font-semibold'>Item Total</p>
-        <p className='font-semibold'>Delivery Fee (3.2 Km)</p>
+        <p className='font-semibold underline underline-offset-2'>Delivery Fee (3.2 Km)</p>
         <p className='font-semibold'>GST (18%)</p>
       </div>
 

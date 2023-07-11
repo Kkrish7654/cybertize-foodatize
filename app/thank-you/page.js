@@ -8,7 +8,7 @@ const Index = () => {
   return (
     <div className='px-[20px] py-[28px] flex flex-col gap-4'>
       <div className='flex justify-center items-center mt-4 mb-4'>
-        <img src='healthy-eating.png' alt='healthy eating'/>
+        <img src='./image/healthy-eating.png' alt='healthy eating'/>
       </div>
 
       <div className='flex flex-col gap-4'>
@@ -21,7 +21,7 @@ const Index = () => {
 
       <div className='text-center mt-8'>
         <Link className='text-center text-[18px] underline
-         text-black font-semibold underline-offset-2' href="/">Back to home</Link>
+         text-black font-semibold underline-offset-2' href="/home">Back to home</Link>
       </div>
     </div>
   )

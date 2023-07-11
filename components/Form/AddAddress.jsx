@@ -3,6 +3,10 @@
 import React, { useEffect, useState } from "react";
 import ButtonSuccess from "../Buttons/ButtonSuccess";
 import axios from "axios";
+import { Formik, Field, ErrorMessage } from 'formik'
+import * as Yup from 'yup'
+import { useRouter } from 'next/navigation'
+
 
 const AddAddress = () => {
   const [longitude, setLongitude] = useState(null);
@@ -72,22 +76,52 @@ const AddAddress = () => {
     getPlaceDetails();
   }, [latitude, longitude]);
 
-  // end //
 
-  // form submisson start //
-  const handleFormSubmit = (event) => {
-    event.preventDefault();
-    const jsonData = JSON.stringify(formData);
-    console.log(formData, ":", jsonData);
+  // end //
+  
+
+  //// Form Validation start ////
+  const initialValues = {
+    fullAddress:'',
+    pincode:'',
+    personName:'',
+    phone:''
+  }
+
+  const validationSchema = Yup.object().shape({
+    fullAddress: Yup.string().required('Full Address is required'),
+    pincode: Yup.string()
+      .matches(/^\d{6}$/, 'Pincode must be exactly 6 digits')
+      .required('Pincode is required'),
+    personName: Yup.string().required('Person name is required'),
+    phone: Yup.string()
+      .matches(/^\d{10}$/, 'Phone number must be exactly 10 digits')
+      .required('Phone number is required'),
+  });
+
+
+  const handleSubmit = async (values, { setSubmitting }) => {
+    setSubmitting(true);
+    // Simulate an async operation (e.g., API request)
+    await new Promise((resolve) => setTimeout(resolve, 1500));
+    setSubmitting(false);
+    setSubmitting(false);
+    router.push('/address-select'); // Navigate to the next page
   };
-
-  // end //
+  //// end ////
 
   return (
     <div className="p-[18px] py-[28px] flex flex-col gap-4">
       <h4 className="font-bold">Add new address</h4>
 
-      <form className="w-full max-w-lg " onSubmit={handleFormSubmit}>
+      <Formik 
+        initialValues={initialValues}
+        validationSchema={validationSchema}
+        onSubmit={handleSubmit}
+      >
+          {({ handleSubmit, isSubmitting, isValidating }) => (
+
+      <form className="w-full max-w-lg " onSubmit={handleSubmit}>
         <div className="flex -mx-3 mb-6">
           <div className="w-full px-3">
             <label
@@ -126,12 +160,13 @@ const AddAddress = () => {
             className="block tracking-wide text-[#848484] text-xs font-bold mb-2"
             htmlFor="full-address"
           >
-            Ennter full address
+            Enter full address
           </label>
-          <input
+          <ErrorMessage className='text-sm text-red-600' name="fullAddress" component="div" />
+          <Field
             className="appearance-none block w-full mb-4 bg-white rouded-md p-2 py-5"
             id="full-address"
-            name="full-address"
+            name="fullAddress"
             value={placeName}
             type="text"
           />
@@ -144,7 +179,8 @@ const AddAddress = () => {
           >
             Pincode
           </label>
-          <input
+        <ErrorMessage className='text-sm text-red-600' name="pincode" component="div" />
+          <Field
             className="appearance-none block w-full mb-4 bg-white rouded-md p-2"
             id="pincode"
             name="pincode"
@@ -156,16 +192,17 @@ const AddAddress = () => {
         <div>
           <label
             className="block tracking-wide text-[#848484] text-xs font-bold mb-2"
-            htmlFor="person-name"
+            htmlFor="personName"
           >
             Recieving Person’s Name
           </label>
-          <input
+        <ErrorMessage className='text-sm text-red-600' name="personName" component="div" />
+          <Field
             className="appearance-none block w-full mb-4 bg-white rouded-md p-2"
-            id="person-name"
-            name="person-name"
+            id="personName"
+            name="personName"
             type="text"
-            onChange={(e) => setFormData((prevData) => ({ ...prevData, name: e.target.value }))}
+            //onChange={(e) => setFormData((prevData) => ({ ...prevData, name: e.target.value }))}
           />
         </div>
 
@@ -176,22 +213,27 @@ const AddAddress = () => {
           >
             Recieving Person’s Mobile Number
           </label>
-          <input
+        <ErrorMessage className='text-sm text-red-600' name="phone" component="div" />
+          <Field
             className="appearance-none block w-full mb-4 bg-white rouded-md p-2"
             id="person-mobile"
-            name="person-mobile"
+            name="phone"
             type="number"
-            onChange={(e) => setFormData((prevData) => ({ ...prevData, phone: e.target.value }))}
+            //onChange={(e) => setFormData((prevData) => ({ ...prevData, phone: e.target.value }))}
           />
         </div>
 
         <button
-          type="submit"
-          className={`w-full h-[40px] text-white text-[20px] bg-[#23AF00] mt-4`}
-      >
-        Save Address
-      </button>
+            type="submit"
+            disabled={isSubmitting || isValidating}
+            className={`w-full h-[40px] text-white text-[20px] bg-[#23AF00] mt-2`}
+  
+          >
+            {isSubmitting ? 'Loading...' : 'Signup'}
+          </button>
       </form>
+          )}
+      </Formik>
     </div>
   );
 };
