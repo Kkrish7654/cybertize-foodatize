@@ -36,9 +36,6 @@ const SignupDetails = () => {
     router.push('/home'); // Navigate to the next page
   };
 
-  const isFormValidAndDisabled = !formik.isValid && formik.isSubmitting;
-
-
 
   return (
     <div className='p-[18px] py-[28px] flex flex-col gap-6'>
