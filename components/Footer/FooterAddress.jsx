@@ -12,7 +12,7 @@ const FooterAddres = () => {
           <h4 className='text-[16px] font-semibold'>1 Item | Rs.340</h4>
           <p className='text-xs'>Extra charges may apply</p>
         </div>
-        <div className='text-left pl-8 ml-28'>
+        <div className='text-left pl-8 ml-20'>
         <Link className='text-[17px] font-semibold' href="/address-select">
           <span className="whitespace-nowrap">Proceed to</span> <br className="hidden" /><span className="whitespace-nowrap">Checkout</span>
         </Link>
