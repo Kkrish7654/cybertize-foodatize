@@ -78,7 +78,7 @@ const OtpInputs = () => {
         className={`w-full h-[40px] text-white text-[20px] bg-[#23AF00]`}
         disabled={isButtonDisabled}
       >
-        Continue
+         {formik.isSubmitting ? 'Loading...' : 'Continue'}
       </button>
       
     </form>

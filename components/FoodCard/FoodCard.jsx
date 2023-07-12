@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react'
 
-const FoodCard = ({item_name, item_price, item_quantity, item_details}) => {
+const FoodCard = ({item_name, item_price, item_quantity, item_details, onClick}) => {
 
   const [isAdded, setIsAdded] = useState(false)
   const [count, setCount] = useState(0)
@@ -29,6 +29,9 @@ const FoodCard = ({item_name, item_price, item_quantity, item_details}) => {
   };
 
 
+  const handleOnClick = () => {
+    onClick();
+  }
   
 
   return (
@@ -55,7 +58,7 @@ const FoodCard = ({item_name, item_price, item_quantity, item_details}) => {
           </div>
           )
         }
-          <Link className='underline text-sm text-[#4E4E4E]' href="">View details</Link>
+          <button onClick={handleOnClick} className='underline text-sm text-[#4E4E4E]'>View details</button>
         </div>
       </div>
     </div>

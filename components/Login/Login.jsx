@@ -51,7 +51,7 @@ const Login = () => {
 
               
                 <button type='submit' disabled={isSubmitting || isValidating} className={`w-full h-[40px] text-white text-[20px] bg-[#23AF00] mt-8 `}>   
-                 Continue  
+                {isSubmitting ? 'Loading...' : 'Continue'} 
                 </button>
               </form>
           )}

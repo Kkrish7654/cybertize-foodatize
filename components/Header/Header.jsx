@@ -31,10 +31,14 @@ const Header = () => {
             <img src='./image/whatsapp.png' alt='whatsapp'/>
             <span className='text-xs'>Support</span>
           </div>
+          <Link href="/my-orders">
           <div className='flex flex-col gap-1 items-center'>
+            
             <img src='./image/user.png' alt='whatsapp'/>
             <span className='text-xs'>Account</span>
           </div>
+          </Link>
+
         </div>
   
      

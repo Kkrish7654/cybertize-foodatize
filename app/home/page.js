@@ -5,7 +5,7 @@ import Footer from '@/components/Footer/Footer'
 
 const Index = () => {
   return (
-    <div className='min-h-screen relative'>
+    <div className='min-h-screen relative '>
         <HomeScreen/>
         <Footer/>
     </div>
