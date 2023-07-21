@@ -5,9 +5,13 @@ import OTPInput from 'react-otp-input';
 import ButtonSuccess from '../Buttons/ButtonSuccess';
 import Link from 'next/link';
 import OtpInputs from './OtpInput';
+import { useAppContext } from '@/context/AppContext';
 
 const Otp = () => {
 
+  const {phone} = useAppContext();
+
+  console.log("phone", phone);
   const [otp, setOtp] = useState('');
 
   return (

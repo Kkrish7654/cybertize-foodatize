@@ -1,32 +1,63 @@
+'use client'
+
 import React, { useState } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import axios from "axios";
+import { useAppContext } from "@/context/AppContext";
 
 const OtpInputs = () => {
   const [otp, setOtp] = useState(Array(5).fill(""));
+  const {phone} = useAppContext();
+  const new_otp = otp.join('')
+  const router = useRouter();
+  const [otpError, setOtpError] = useState(true)
 
-  const handleOtpChange = (e, index) => {
-    const { value } = e.target;
+  //Start Otp API
+  const handleOtp = async() => {
+    try{
+      const response = await axios({
+        method:"POST",
+        url:"/foodDeliveryProject/public/api/user/otp-verification",
+        data:{
+          phone_number:phone,
+          phone_otp:new_otp
+        }
+      })
+  
+      router.push("/signup-details");
+      setOtpError(!otpError)
+    console.log(response);
+  
+    }catch(err){
+      console.error(err)
+    }
+  
+    }
+     // End Otp API
 
-    setOtp((prevOTP) => {
-      const updatedOTP = [...prevOTP];
-      updatedOTP[index] = value;
-      return updatedOTP;
-    });
-
+  const handleChange = (input, index) => {
+    const value = event.target.value;
+  
+    if (value.length <= 1) {
+      setOtp((prevOTP) => {
+        const updatedOTP = [...prevOTP];
+        updatedOTP[index] = value;
+        return updatedOTP;
+      });
+    }
+  
     if (value.length === 1 && index < otp.length - 1) {
       inputRefs[index + 1].current.focus();
     }
   };
-
-  const router = useRouter();
-
-  const inputRefs = Array(5).fill().map((_, index) => React.createRef());
+  
 
   const validationSchema = Yup.object().shape({
-    otp: Yup.string().required("OTP is required"),
+    otp: Yup.string()
+    .matches(/^\d{5}$/, "must be 5 digits")
   });
 
   const formik = useFormik({
@@ -35,14 +66,17 @@ const OtpInputs = () => {
     },
     validationSchema: validationSchema,
     onSubmit: (values) => {
+      const new_otp = otp.join('')
       console.log("OTP:", values.otp);
-      router.push("/signup-details");
+      handleOtp()
     },
   });
 
-  const isButtonDisabled = !otp.every((value) => value !== "");
+  const inputRefs = Array(5)
+    .fill()
+    .map((_, index) => React.createRef());
 
- 
+  const isButtonDisabled = !otp.every((value) => value !== "");
 
   return (
     <form className="flex flex-col gap-4" onSubmit={formik.handleSubmit}>
@@ -55,9 +89,11 @@ const OtpInputs = () => {
             maxLength="1"
             className="border border-green-500 p-4 mx-1 text-center w-[50px] h-[50px]"
             name="otp"
-            onChange={(e) => handleOtpChange(e, index)}
+            onChange={(event) => {
+              handleChange(event, index);
+            }}
             onBlur={formik.handleBlur}
-            value={otp[index]}
+            value={formik.values.otp[index]}
           />
         ))}
       </div>
@@ -65,8 +101,8 @@ const OtpInputs = () => {
       <Link className="text-sm underline" href="">
         Resend OTP
       </Link>
-
-      {formik.touched.otp && formik.errors.otp && (
+      
+      {!otpError && formik.touched.otp && formik.errors.otp && (
         <div className="text-red-500">{formik.errors.otp}</div>
       )}
       <button
@@ -74,8 +110,9 @@ const OtpInputs = () => {
         className={`w-full h-[40px] text-white text-[20px] bg-[#23AF00]`}
         disabled={isButtonDisabled}
       >
-        {formik.isSubmitting ? 'Loading...' : 'Continue'}
+         {formik.isSubmitting ? 'Loading...' : 'Continue'}
       </button>
+      
     </form>
   );
 };

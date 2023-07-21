@@ -1,11 +1,17 @@
+'use client'
+
 import Otp from "@/components/Otp/Otp"
+import { AppProvider } from "@/context/AppContext"
 
 
 const Index = () => {
   return (
-    <div className='min-h-screen relative'>
-      <Otp/>
-    </div>
+
+      <div className='min-h-screen relative'>
+        <Otp/>
+      </div>
+ 
+    
   )
 }
 

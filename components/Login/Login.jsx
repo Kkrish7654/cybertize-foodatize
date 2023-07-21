@@ -1,20 +1,21 @@
 'use client'
 
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { Formik, Field, ErrorMessage } from 'formik'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import * as Yup from 'yup'
 import UseAxios from '../hooks/UseAxios';
 import axios from 'axios'
+import { useAppContext } from '@/context/AppContext'
 
 
 
 const Login = () => {
 
-  const [otp, setOtp] = useState("")
+  const {phone, setPhone} = useAppContext()
+  const [myPhone, setMyPhone] = useState("")
 
-  
   //Start signup API
   const handleSignUp = async() => {
   try{
@@ -22,19 +23,19 @@ const Login = () => {
       method:"POST",
       url:"/foodDeliveryProject/public/api/user/register-users",
       data:{
-        phone_number:otp
+        phone_number:myPhone
       }
     })
+
+
+  console.log(response);
+
   }catch(err){
     console.error(err)
   }
+
   }
    // End signup API
-
-
-  const handleOtpChange = (e) => {
-    setOtp(e.target.value)
-  }
   // API end
 
 
@@ -49,11 +50,13 @@ const Login = () => {
   const validationSchema = Yup.object().shape({
     number: Yup.string()
       .matches(/^\d{10}$/, 'Number must be exactly 10 digits long')
-      .required('Number is required'),
+      .required('Phone Number is required')
+      .max(10, "Must be 10 digits")
   });
 
   const handleSubmit = (values) => {
     // Perform form submission
+    setMyPhone(values)
     console.log(values);
     router.push('/otp');
   };
@@ -67,25 +70,31 @@ const Login = () => {
       </div>
 
       <Formik initialValues={initialValues} 
-      validationSchema={validationSchema}
+        validationSchema={validationSchema}
+     
        onSubmit={handleSubmit}>
-          {({ handleSubmit, isSubmitting, isValidating }) => (
+          {({ handleSubmit, handleChange, isSubmitting, isValidating }) => (
               <form className='flex flex-col gap-1' onSubmit={handleSubmit}>
-                <h4 className='text-[#4A4A4A] text-[18px] font-medium tracking-wide'>Enter 10 digit mobile number</h4>
-                <ErrorMessage className='text-sm text-red-600' name="number" component="div" />
-                <Field
-                  onChange={handleOtpChange}
-                  value={otp}
-                  name="number"      
-                  type='number'
-                  className={`w-full p-[10px] border-[1px] border-[#23AF00]`}
-                />
+              <h4 className='text-[#4A4A4A] text-[18px] font-medium tracking-wide'>Enter 10 digit mobile number</h4>
+              <ErrorMessage className='text-sm text-red-600' name="number" component="div" />
+              <Field
+              onChange={(e) => {
+                handleChange(e);
+                setPhone(e.target.value)
+                setMyPhone(e.target.value)
+              }}
+              value={myPhone}
+              name="number"      
+              type='tel'
+              maxLength='10'
+              className={`w-full p-[10px] border-[1px] border-[#23AF00]`}
+              />
 
-              
-                <button onClick={handleSignUp} type='submit' disabled={isSubmitting || isValidating} className={`w-full h-[40px] text-white text-[20px] bg-[#23AF00] mt-8 `}>   
-                {isSubmitting ? 'Loading...' : 'Continue'} 
-                </button>
-              </form>
+            
+              <button onClick={handleSignUp} type='submit' disabled={isSubmitting || isValidating} className={`w-full h-[40px] text-white text-[20px] bg-[#23AF00] mt-8 `}>   
+              {isSubmitting ? 'Loading...' : 'Continue'} 
+              </button>
+            </form>
           )}
               
       </Formik>
