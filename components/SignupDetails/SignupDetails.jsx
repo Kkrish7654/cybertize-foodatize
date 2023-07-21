@@ -7,7 +7,8 @@ import Link from 'next/link'
 import { Formik, Field, ErrorMessage } from 'formik'
 import * as Yup from 'yup'
 import { useRouter } from 'next/navigation'
-
+import UseAxios from '../hooks/UseAxios';
+import axios from 'axios'
 
 
 const SignupDetails = () => {
@@ -35,6 +36,7 @@ const SignupDetails = () => {
     setSubmitting(false);
     router.push('/home'); // Navigate to the next page
   };
+
 
 
   return (

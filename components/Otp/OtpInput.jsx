@@ -7,10 +7,8 @@ import { useRouter } from "next/navigation";
 const OtpInputs = () => {
   const [otp, setOtp] = useState(Array(5).fill(""));
 
-  const router = useRouter();
-
-  const handleChange = (input, index) => {
-    const value = event.target.value;
+  const handleOtpChange = (e, index) => {
+    const { value } = e.target;
 
     setOtp((prevOTP) => {
       const updatedOTP = [...prevOTP];
@@ -23,9 +21,12 @@ const OtpInputs = () => {
     }
   };
 
+  const router = useRouter();
+
+  const inputRefs = Array(5).fill().map((_, index) => React.createRef());
+
   const validationSchema = Yup.object().shape({
-    otp: Yup.string()
-      .required("OTP is required"),
+    otp: Yup.string().required("OTP is required"),
   });
 
   const formik = useFormik({
@@ -39,11 +40,9 @@ const OtpInputs = () => {
     },
   });
 
-  const inputRefs = Array(5)
-    .fill()
-    .map((_, index) => React.createRef());
-
   const isButtonDisabled = !otp.every((value) => value !== "");
+
+ 
 
   return (
     <form className="flex flex-col gap-4" onSubmit={formik.handleSubmit}>
@@ -56,12 +55,9 @@ const OtpInputs = () => {
             maxLength="1"
             className="border border-green-500 p-4 mx-1 text-center w-[50px] h-[50px]"
             name="otp"
-            onChange={(event) => {
-              handleChange(event, index);
-              formik.handleChange(event);
-            }}
+            onChange={(e) => handleOtpChange(e, index)}
             onBlur={formik.handleBlur}
-            value={formik.values.otp[index]}
+            value={otp[index]}
           />
         ))}
       </div>
@@ -69,7 +65,7 @@ const OtpInputs = () => {
       <Link className="text-sm underline" href="">
         Resend OTP
       </Link>
-      
+
       {formik.touched.otp && formik.errors.otp && (
         <div className="text-red-500">{formik.errors.otp}</div>
       )}
@@ -78,9 +74,8 @@ const OtpInputs = () => {
         className={`w-full h-[40px] text-white text-[20px] bg-[#23AF00]`}
         disabled={isButtonDisabled}
       >
-         {formik.isSubmitting ? 'Loading...' : 'Continue'}
+        {formik.isSubmitting ? 'Loading...' : 'Continue'}
       </button>
-      
     </form>
   );
 };

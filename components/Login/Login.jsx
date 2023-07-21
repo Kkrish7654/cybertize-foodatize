@@ -1,16 +1,45 @@
 'use client'
 
-import React from 'react'
+import React, { useState } from 'react'
 import { Formik, Field, ErrorMessage } from 'formik'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import * as Yup from 'yup'
+import UseAxios from '../hooks/UseAxios';
+import axios from 'axios'
+
+
 
 const Login = () => {
 
+  const [otp, setOtp] = useState("")
+
+  
+  //Start signup API
+  const handleSignUp = async() => {
+  try{
+    const response = await axios({
+      method:"POST",
+      url:"/foodDeliveryProject/public/api/user/register-users",
+      data:{
+        phone_number:otp
+      }
+    })
+  }catch(err){
+    console.error(err)
+  }
+  }
+   // End signup API
+
+
+  const handleOtpChange = (e) => {
+    setOtp(e.target.value)
+  }
+  // API end
+
+
   const router = useRouter()
-
-
+  
   // form validation using formik yup
   const initialValues = {
     number:''
@@ -45,12 +74,15 @@ const Login = () => {
                 <h4 className='text-[#4A4A4A] text-[18px] font-medium tracking-wide'>Enter 10 digit mobile number</h4>
                 <ErrorMessage className='text-sm text-red-600' name="number" component="div" />
                 <Field
-                name="number"      
-                type='number'
-                className={`w-full p-[10px] border-[1px] border-[#23AF00]`}/>
+                  onChange={handleOtpChange}
+                  value={otp}
+                  name="number"      
+                  type='number'
+                  className={`w-full p-[10px] border-[1px] border-[#23AF00]`}
+                />
 
               
-                <button type='submit' disabled={isSubmitting || isValidating} className={`w-full h-[40px] text-white text-[20px] bg-[#23AF00] mt-8 `}>   
+                <button onClick={handleSignUp} type='submit' disabled={isSubmitting || isValidating} className={`w-full h-[40px] text-white text-[20px] bg-[#23AF00] mt-8 `}>   
                 {isSubmitting ? 'Loading...' : 'Continue'} 
                 </button>
               </form>
