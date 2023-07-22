@@ -1,22 +1,27 @@
 'use client'
 
-import React from 'react'
+import React, { useEffect } from 'react'
 import FoodCard from '../FoodCard/FoodCard'
 import SearchBox from '../SearchBox/SearchBox';
 import Footer from '../Footer/Footer';
 import FoodDetails from '../FoodCard/FoodDetails';
 import { useState } from 'react';
+import Cookies from 'js-cookie';
+import { useRouter } from 'next/navigation';
+import RequireToken from '../hooks/RequireToken';
+import axios from 'axios';
 
 const HomeScreen = () => {
     // show view details popup
 
     const [isOpen, setIsOpen] = useState(false);
+    const [isLoggedIn, setIsLoggedIn] = useState(false)
+    const [products, setProducts] = useState([])
+    const router = useRouter()
 
     const handleOpen = () => {
       setIsOpen(!isOpen);
     }
-
-
 
   // dummy json data
   const itemData = [
@@ -58,11 +63,11 @@ const HomeScreen = () => {
       <div className='flex flex-col gap-2'>
         {/* render items here */}
       {
-        itemData.map((item) => (
-          <>
+        itemData.map((item, index) => (
+          <div key={index}>
           <FoodCard onClick={handleOpen} item_name={item.item_name} item_price={item.item_price} item_quantity={item.item_quantity}/>
           <FoodDetails isOpen={isOpen} setIsOpen={setIsOpen}/>
-          </>
+          </div>
           ))
       }
       </div>
@@ -77,4 +82,4 @@ const HomeScreen = () => {
   )
 }
 
-export default HomeScreen;
+export default RequireToken(HomeScreen);
