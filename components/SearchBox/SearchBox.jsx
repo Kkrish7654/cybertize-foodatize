@@ -1,9 +1,17 @@
 import React from "react";
 
-const SearchBox = () => {
+const SearchBox = ({value, onChange, onSearch}) => {
   return (
     <form className="relative">
       <input
+        value={value}
+        onChange={onChange}
+        onKeyUp={(e) => {
+          e.preventDefault();
+          if (e.key === "Enter") {
+            onSearch();
+          }
+        }}
         className="
         w-full px-3 py-3 rounded-md truncate"
         type="search"

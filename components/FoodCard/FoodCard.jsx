@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react'
 
-const FoodCard = ({item_name, item_price, item_quantity, item_details, onClick}) => {
+const FoodCard = ({item_name, item_price, pieces, item_details, onClick}) => {
 
   const [isAdded, setIsAdded] = useState(false)
   const [count, setCount] = useState(0)
@@ -39,10 +39,10 @@ const FoodCard = ({item_name, item_price, item_quantity, item_details, onClick})
       <div className='p-2 w-[120px] h-[100px]'>
         <img className='w-full h-full object-contain' src="./image/food-item.png" alt="food-item" />
       </div>
-      <div className='p-2 flex flex-col gap-2'>
+      <div className='p-2 flex flex-col gap-2 truncate'>
         <div>
           <h4 className='font-bold text-[18px] text-[#4D4D4D] truncate'>{item_name}</h4>
-          <p className='text-sm font-bold text-[#2E2E2E]'>Rs.{item_price} / <span className='text-[#616161]'>{item_quantity} Pieces</span></p>
+          <p className='text-sm font-bold text-[#2E2E2E]'>Rs.{item_price} / <span className='text-[#616161]'>{pieces}</span></p>
         </div>
         
         <div className='flex gap-4 items-center'>
